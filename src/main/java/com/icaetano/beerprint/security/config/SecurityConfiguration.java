@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -61,6 +62,8 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 // .antMatchers(HttpMethod.POST,  "/usuarios").permitAll()
+                .antMatchers(HttpMethod.GET,  "/").permitAll()
+                .antMatchers("/api/swagger-ui/**").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/**")
                 .hasAnyAuthority(ROLE_USER.value, ROLE_ADMIN.value, ROLE_SUPER_ADMIN.value)
@@ -75,4 +78,6 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
+ 
 }

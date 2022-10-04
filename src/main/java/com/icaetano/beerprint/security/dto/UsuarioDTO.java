@@ -5,6 +5,9 @@ import java.util.stream.Collectors;
 
 import com.icaetano.beerprint.security.model.Usuario;
 
+import lombok.Getter;
+
+@Getter
 public class UsuarioDTO {
     private Long id;
     private String username;
@@ -16,17 +19,6 @@ public class UsuarioDTO {
         this.email = usu.getEmail();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 
     public static List<UsuarioDTO> converter(List<Usuario> usuarios) {
 
